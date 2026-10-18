@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"ask_wiki_question","arguments":{"repoName":"All-Hands-AI/OpenHands","question":"How does this agent platform support self-hosted deployment, running with local or any LLM provider, data privacy (no data leaving the deployment), and what autonomy or confirmation modes does it offer?"}}}

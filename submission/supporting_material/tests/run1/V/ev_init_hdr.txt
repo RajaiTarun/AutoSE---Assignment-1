@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 12:36:27 GMT
+Content-Type: text/event-stream
+Transfer-Encoding: chunked
+Connection: keep-alive
+server: uvicorn
+cache-control: no-cache, no-transform
+x-accel-buffering: no
+

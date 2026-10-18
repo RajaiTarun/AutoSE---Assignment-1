@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"ask_wiki_question","arguments":{"repoName":"openai/codex","question":"How does this agent harness define and configure autonomy levels (approval modes), sandboxing/permissions, and model/provider selection (model-agnostic use, local or self-hosted models)?"}}}
