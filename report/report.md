@@ -110,20 +110,14 @@ The full raw files (test inputs, all agent outputs for every round, raw MCP resp
 
 NC = NEEDS CLARIFICATION; Q = open questions; CF = conflicts. Across all runs, no run called a vague input "ready" and none invented a number.
 
-## C. Defects found and fixes
-
-**After round 1 (14, fixed in v2):** (1) no output format for declined or non-software input, so a "decline set" was added; (2) "is there a tool for X?" and mixed inputs uncovered, so borderline rules were added; (3) output-folder rule clashed with a user-named folder, so the user's folder wins; (4) "NOT READY" was undefined, replaced by defined labels; (5) BLOCKED was too narrow for scope questions; (6) stated-but-undefined terms, partial facts and proposals fit no status, so the term/meaning split, lower bounds and "as proposal" were added; (7) no ID for conflicts, so `CF-nn` was added; (8) same-source contradictions and conflicts with no dependants; (9) acceptance criterion required on items that cannot have one, so "N/A, not testable" was allowed; (10) "stop and ask" vs "never stall" in unattended runs, so a non-interactive escalation rule was added; (11) 5-question limit vs a large register, so the limit applies per interactive round; (12) no rule for skipping the MCP tool or for choosing a repo; (13) EV entry detail unspecified; (14) check granularity and "cannot judge" treated as FAIL.
-**After round 2 (4, fixed in v2.1):** BLOCKED / NEEDS CLARIFICATION tie-break; "potential" conflicts for tensions between undefined terms; NFR-vs-CON and status guidance for actors, assumptions and risks; prefer "none yet, see Q-nnn" over empty criterion stubs.
-**After round 3, not fixed** (so the submitted file equals the tested one): see limitations in section 4.
-
-## D. Raw MCP evidence
+## C. Raw MCP evidence
 
 **Discovery (18 Oct 2026).** `initialize` returned HTTP 200 from `https://mcp.deepwiki.com/mcp`, followed by `notifications/initialized` (202) and `tools/list`, which listed `ask_wiki_question`, `read_wiki_structure`, `read_wiki_contents`. Headers used: `Content-Type: application/json`, `Accept: application/json, text/event-stream`.
 **Call 1 (16 Oct 2026, 12:30 UTC, `block/goose`):** question about autonomy modes, approval gating and self-hosting. HTTP 200 after about 14 s of keep-alive pings (`: ping`, then a `notifications/message` progress event, then the result). Result: *"The agent supports four autonomy or permission modes: `Auto`, `Approve`, `Smart Approve`, and `Chat`. Tool calls are gated by user approval based on the selected `GooseMode` and individual tool permissions."*
 **Call 2 (18 Oct 2026, `All-Hands-AI/OpenHands`, shown in section 2).** Caveats recorded by the agent: the answer describes a sub-product it calls "Agent Canvas", has blank citation markers and was not checked against code, so it was marked unverified and used only to add options to questions.
 **Other runs:** T1 (VROOM), T3 (Celery) and T7 (Polars) each used one successful call; none needed a retry. No timeout or error occurred in any call, so those handling paths were not exercised.
 
-## E. Interactive test (V, round 3)
+## D. Interactive test (V, round 3)
 
 Questions asked (5, each with reason, options and what blocks if unanswered): meaning of "fully autonomous"; what the harness is; meaning of "sovereign"; where it runs and whether data may reach outside models; what "enterprise-grade" requires. **Simulated stakeholder answers (written by me, not Varthik):** autonomy limited by an admin-set sandbox and policy; a platform governing many agents; data and processing stay in India with DPDP Act compliance; on-premises or private cloud in India, local models only; single sign-on and role-based access plus audit logs; "don't know" for availability and scale numbers; and an extra claim that admins may opt in to hosted models such as GPT.
 **What the skill did:** "fully autonomous", "harness" and "sovereign" moved from UNRESOLVED to CONFIRMED with the stakeholder's meaning; the "don't know" stayed an UNRESOLVED placeholder with no suggested number; the contradiction (local models only and nothing leaves the premises, versus opt-in to hosted GPT) became actual conflict `CF-02` between two of the stakeholder's own answers, no winner picked, dependants BLOCKED, decision routed to the stakeholder and a legal owner; the DPDP legal question was escalated and the tool was not used for it; 14 new questions arose from the answers.
